@@ -1,25 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { UniqueIdService } from './../../services/unique-id/unique-id.service';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { LikeWidgetComponent } from './like-widget.component';
 
 describe('LikeWidgetComponent', () => {
-  let component: LikeWidgetComponent;
-  let fixture: ComponentFixture<LikeWidgetComponent>;
+  let fixture: ComponentFixture<LikeWidgetComponent> = null;
 
-  beforeEach(async () => {
+  beforeEach(async() => {
     await TestBed.configureTestingModule({
-      declarations: [ LikeWidgetComponent ]
-    })
-    .compileComponents();
+      declarations: [LikeWidgetComponent],
+      providers: [UniqueIdService]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(LikeWidgetComponent)
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LikeWidgetComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create component', () => {
+    const instance = fixture.componentInstance;
+    expect(instance).toBeTruthy();
   });
 });
